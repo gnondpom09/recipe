@@ -8,11 +8,13 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
+
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/list_of_recipes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/recyclerview_item"
+        tools:listitem="@layout/recipe_detail"
         android:background="@android:color/holo_purple"/>
 
 </android.support.constraint.ConstraintLayout>

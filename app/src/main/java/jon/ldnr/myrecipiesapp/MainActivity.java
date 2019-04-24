@@ -20,21 +20,34 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private WordViewModel mWordViewModel;
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+    // Constantes
+    public static final int NEW_RECIPE_ACTIVITY_REQUEST_CODE = 1;
 
+    // Properties
+    private WordViewModel mWordViewModel;
+
+    /**
+     * Create view of application
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Create app and toolbar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final WordListAdapter adapter = new WordListAdapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // Get elements
+        RecyclerView listOfRecipes = findViewById(R.id.list_of_recipes);
 
+        // Set view of list layout
+        final WordListAdapter adapter = new WordListAdapter(this);
+        listOfRecipes.setAdapter(adapter);
+        listOfRecipes.setLayoutManager(new LinearLayoutManager(this));
+
+        // Event change for elements of list
         mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
         mWordViewModel.getAllWords().observe(this, new Observer<List<Word>>() {
             @Override
@@ -43,19 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setWords(words);
             }
         });
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
-                startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
-            }
-        });
     }
 
+    /**
+     * Create options menu
+     * @param menu menu
+     * @return true if options menu is created
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Handle action bar item clicks
+     * @param item item of menu
+     * @return true
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -78,14 +90,32 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Item activity result
+     * @param requestCode request code
+     * @param resultCode result code
+     * @param data
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == NEW_RECIPE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
             mWordViewModel.insert(word);
         } else {
             Toast.makeText(getApplicationContext(), R.string.empty_not_saved, Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     * Event to open form for add new recipe
+     * @param view view
+     */
+    public void btnAddNewRecipe(View view) {
+
+        // Open form
+        Intent formIntent = new Intent(this, FormAddNewRecipe.class);
+        startActivityForResult(formIntent, NEW_RECIPE_ACTIVITY_REQUEST_CODE);
+
     }
 }
