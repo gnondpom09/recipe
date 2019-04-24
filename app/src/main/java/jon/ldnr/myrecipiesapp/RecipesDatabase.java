@@ -44,7 +44,7 @@ public abstract class RecipesDatabase extends RoomDatabase {
         private final TypeDao mTDao;
 
 
-        PopulateDbAsync(RecipesDatabase db) {
+        PopulateDbAsync(@NonNull RecipesDatabase db) {
 //            mWDao = db.wordDao();
             mRDao = db.recipeDao();
             mSDao = db.stepDao();
@@ -75,7 +75,7 @@ public abstract class RecipesDatabase extends RoomDatabase {
             mRDao.deleteRecipes();
             Recipe recipe = new Recipe("Recette très bonne", "Ingrédients très bons", "Ustensiles de pro", "2s", "miam miam");
             mRDao.insertRecipe(recipe);
-            recipe = new Recipe("Recette bof", "ingrédients : moyens", "ustensiles préhistoroqieus", "5h");
+            recipe = new Recipe("Recette bof", "ingrédients : moyens", "ustensiles préhistoroqieus", "5h", "hùùfzemzem");
             mRDao.insertRecipe(recipe);
 
             return null;

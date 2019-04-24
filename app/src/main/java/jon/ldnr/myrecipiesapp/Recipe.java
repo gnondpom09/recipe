@@ -11,17 +11,19 @@ import android.support.annotation.NonNull;
 
 import java.util.Date;
 
-@Entity(tableName = "recipes",
+@Entity(tableName = "recipes")
+/*
+,
         foreignKeys = {
-            @ForeignKey(entity = User.class,
-                    parentColumns = "id_user",
-                    childColumns = "id_author"),
-            @ForeignKey(entity = Type.class,
-                    parentColumns = "id_type",
-                    childColumns = "id_type")
+@ForeignKey(entity = User.class,
+        parentColumns = "id_user",
+        childColumns = "id_author"),
+@ForeignKey(entity = Type.class,
+        parentColumns = "id_type",
+        childColumns = "id_type")
             },
-        indices = {@Index(value = {"id_author"}, unique = true), @Index(value = {"id_type"}, unique = true)}
-        )
+                    indices = {@Index(value = {"id_author"}), @Index(value = {"id_type"})}
+*/
 public class Recipe {
 
     // TODO comment attributes
@@ -34,11 +36,9 @@ public class Recipe {
     private String title;
 
     @ColumnInfo(name = "id_author")
-    @NonNull
     private int authorId;
 
     @ColumnInfo(name = "id_type")
-    @NonNull
     private int typeId;
 
     @ColumnInfo(name = "date_creation")
@@ -81,7 +81,7 @@ public class Recipe {
         this.comment = comment;
     }
 
-    @Ignore
+    /*@Ignore
     public Recipe(@NonNull String title, @NonNull String ingredients, @NonNull String utensils, @NonNull String duration) {
         this.title = title;
         this.dateCreate = new Date();
@@ -89,7 +89,7 @@ public class Recipe {
         this.utensils = utensils;
         this.duration = duration;
         this.comment = "";
-    }
+    }*/
 
     // our getters and setters for recipe entities
     public int getRecipeId() {
@@ -107,6 +107,8 @@ public class Recipe {
     public void setTitle(String title) {
         this.title = title;
     }
+
+
 
 /*
     public Type getType() {
