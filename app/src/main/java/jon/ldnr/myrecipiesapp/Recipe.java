@@ -3,14 +3,28 @@ package jon.ldnr.myrecipiesapp;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
 import java.util.Date;
 
-@Entity(tableName = "recipe", foreignKeys = {@ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "authorId"), @ForeignKey(entity = Type.class, parentColumns = "typeId", childColumns = "typeId")})
+@Entity(tableName = "recipes",
+        foreignKeys = {
+            @ForeignKey(entity = User.class,
+                    parentColumns = "id_user",
+                    childColumns = "id_author"),
+            @ForeignKey(entity = Type.class,
+                    parentColumns = "id_type",
+                    childColumns = "id_type")
+            },
+        indices = {@Index(value = {"id_author"}, unique = true), @Index(value = {"id_type"}, unique = true)}
+        )
 public class Recipe {
 
+    // TODO comment attributes
     @ColumnInfo(name = "id_recipe")
     @PrimaryKey(autoGenerate = true)
     private int recipeId;
@@ -18,9 +32,6 @@ public class Recipe {
     @ColumnInfo(name = "title")
     @NonNull
     private String title;
-
-    private Type type;
-    private Step step;
 
     @ColumnInfo(name = "id_author")
     @NonNull
@@ -32,10 +43,12 @@ public class Recipe {
 
     @ColumnInfo(name = "date_creation")
     @NonNull
+    @TypeConverters(DateConverter.class)
     private Date dateCreate;
 
     @ColumnInfo(name = "date_update")
     @NonNull
+    @TypeConverters(DateConverter.class)
     private Date dateUpdate;
 
     @ColumnInfo(name = "ingredients")
@@ -53,6 +66,32 @@ public class Recipe {
     @ColumnInfo(name = "comment")
     private String comment;
 
+/*    private Type type;
+    private Step step;*/
+
+
+    // Constructors
+    public Recipe(@NonNull String title, @NonNull String ingredients, @NonNull String utensils, @NonNull String duration, String comment) {
+        this.title = title;
+        this.dateCreate = new Date();
+        this.dateUpdate = new Date();
+        this.ingredients = ingredients;
+        this.utensils = utensils;
+        this.duration = duration;
+        this.comment = comment;
+    }
+
+    @Ignore
+    public Recipe(@NonNull String title, @NonNull String ingredients, @NonNull String utensils, @NonNull String duration) {
+        this.title = title;
+        this.dateCreate = new Date();
+        this.ingredients = ingredients;
+        this.utensils = utensils;
+        this.duration = duration;
+        this.comment = "";
+    }
+
+    // our getters and setters for recipe entities
     public int getRecipeId() {
         return this.recipeId;
     }
@@ -69,6 +108,7 @@ public class Recipe {
         this.title = title;
     }
 
+/*
     public Type getType() {
         return this.type;
     }
@@ -84,6 +124,7 @@ public class Recipe {
     public void setStep(Step stp) {
         this.step = stp;
     }
+*/
 
     public int getAuthorId() {
         return this.authorId;
@@ -101,20 +142,19 @@ public class Recipe {
         this.typeId = typeId;
     }
 
-
-    public Date getdateCreate() {
+    public Date getDateCreate() {
         return this.dateCreate;
     }
 
-    public void setdateCreate(Date date) {
+    public void setDateCreate(Date date) {
         this.dateCreate = date;
     }
 
-    public Date getdateUpdate() {
+    public Date getDateUpdate() {
         return this.dateUpdate;
     }
 
-    public void setdateUpdatee(Date date) {
+    public void setDateUpdate(Date date) {
         this.dateUpdate = date;
     }
 
@@ -126,7 +166,7 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public String getUtesils() {
+    public String getUtensils() {
         return this.utensils;
     }
 

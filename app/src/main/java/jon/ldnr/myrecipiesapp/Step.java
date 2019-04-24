@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "step")
+@Entity(tableName = "steps")
 public class Step {
 
     @PrimaryKey(autoGenerate = true)
@@ -19,6 +19,15 @@ public class Step {
     @ColumnInfo(name = "url_media")
     @NonNull
     private String urlMedia;
+
+
+
+    // Constructors
+    public Step(String stepText, String urlMedia) {
+        this.stepText = stepText;
+        this.urlMedia = urlMedia;
+    }
+
 
     /**
      * @return the stepId

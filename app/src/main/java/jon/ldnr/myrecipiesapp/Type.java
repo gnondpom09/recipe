@@ -2,10 +2,11 @@ package jon.ldnr.myrecipiesapp;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "dish_type")
+@Entity(tableName = "dishtypes")
 public class Type {
 
     @PrimaryKey(autoGenerate = true)
@@ -19,6 +20,14 @@ public class Type {
     @ColumnInfo(name = "url_typeimage")
     @NonNull
     private String urlTypeImage;
+
+
+    // constructors
+    public Type(String typeName, String urlTypeImage) {
+        this.typeName = typeName;
+        this.urlTypeImage = urlTypeImage;
+    }
+
 
     public int getTypeId() {
         return this.typeId;
