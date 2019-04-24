@@ -44,7 +44,7 @@ public abstract class RecipesDatabase extends RoomDatabase {
         private final TypeDao mTDao;
 
 
-        PopulateDbAsync(RecipesDatabase db) {
+        PopulateDbAsync(@NonNull RecipesDatabase db) {
 //            mWDao = db.wordDao();
             mRDao = db.recipeDao();
             mSDao = db.stepDao();
@@ -67,15 +67,18 @@ public abstract class RecipesDatabase extends RoomDatabase {
             type = new Type("Entrées", "http://res.cloudinary.com/hv9ssmzrz/image/fetch/c_fill,f_auto,g_auto,h_256,q_auto,w_256/http://s3-eu-west-1.amazonaws.com/images-ca-1-0-1-eu/recipe_photos/large/106817/salade-roi-gradlon-3000x2008.jpg");
             mTDao.insertType(type);
 
+            mUDao.deleteUsers();
             User user = new User("admin", "admin");
             User user2 = new User("toto", "test");
             mUDao.insertUser(user);
             mUDao.insertUser(user2);
 
             mRDao.deleteRecipes();
-            Recipe recipe = new Recipe("Recette très bonne", "Ingrédients très bons", "Ustensiles de pro", "2s", "miam miam");
+            Recipe recipe = new Recipe(1, 2,"coucou la recette", "ingredients", "ustensiles", "5h","commentaires");
             mRDao.insertRecipe(recipe);
-            recipe = new Recipe("Recette bof", "ingrédients : moyens", "ustensiles préhistoroqieus", "5h");
+            recipe = new Recipe(2, 3, "Recette très bonne", "Ingrédients très bons", "Ustensiles de pro", "2s", "miam miam");
+            mRDao.insertRecipe(recipe);
+            recipe = new Recipe(1,2,"Recette bof", "ingrédients : moyens", "ustensiles préhistoroqieus", "5h", "hùùfzemzem");
             mRDao.insertRecipe(recipe);
 
             return null;

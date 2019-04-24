@@ -20,19 +20,19 @@ public interface RecipeDao {
     @Delete
     void deleteRecipe(Recipe recipe);
 
-    @Delete
-    void deleteRecipes(Recipe... recipe);
-
     @Update
     void updateRecipe(Recipe recipe);
 
+    @Query("DELETE FROM recipes")
+    void deleteRecipes();
+
     @Query("SELECT * FROM recipes")
     public LiveData<List<Recipe>> getAllRecipes();
-
-    @Query("SELECT * FROM recipes WHERE title LIKE '%' + :searchRecipeBySearch + '%'")
-    public LiveData<List<Recipe>> getRecipeBySearch(String searchRecipeBySearch);
-
-    @Query("SELECT * FROM recipes WHERE id_type LIKE :searchRecipeByType")
-    public LiveData<List<Recipe>> getRecipeByType(int searchRecipeByType);
+//
+//    @Query("SELECT * FROM recipes WHERE title LIKE '%' + :searchRecipeBySearch + '%'")
+//    public LiveData<List<Recipe>> getRecipeBySearch(String searchRecipeBySearch);
+//
+//    @Query("SELECT * FROM recipes WHERE id_type LIKE :searchRecipeByType")
+//    public LiveData<List<Recipe>> getRecipeByType(int searchRecipeByType);
 
 }

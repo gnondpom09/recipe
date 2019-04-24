@@ -21,6 +21,8 @@ public interface UserDao {
     @Insert
     void insertUser(User user);
 
+    @Delete
+    void deleteUsers(User... user);
 
 
 }

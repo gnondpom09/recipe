@@ -11,16 +11,36 @@ import android.support.annotation.NonNull;
 
 import java.util.Date;
 
+
+/*
+,
+        foreignKeys = {
+@ForeignKey(entity = User.class,
+        parentColumns = "id_user",
+        childColumns = "id_author"),
+@ForeignKey(entity = Type.class,
+        parentColumns = "id_type",
+        childColumns = "id_type")
+            },
+                    indices = {@Index(value = {"id_author"}), @Index(value = {"id_type"})}
+*/
+//TODO onDelete = ForeignKey.CASCADE
 @Entity(tableName = "recipes",
         foreignKeys = {
-            @ForeignKey(entity = User.class,
-                    parentColumns = "id_user",
-                    childColumns = "id_author"),
-            @ForeignKey(entity = Type.class,
-                    parentColumns = "id_type",
-                    childColumns = "id_type")
-            },
-        indices = {@Index(value = {"id_author"}, unique = true), @Index(value = {"id_type"}, unique = true)}
+                @ForeignKey(entity = User.class,
+                        parentColumns = "id_user",
+                        childColumns = "id_author"),
+                @ForeignKey(entity = Type.class,
+                        parentColumns = "id_type",
+                        childColumns = "id_type")},
+        indices = {
+                @Index(value =
+                        {"id_author"}
+                        ),
+                @Index(value =
+                        {"id_type"}
+                        )
+                }
         )
 public class Recipe {
 
@@ -34,22 +54,20 @@ public class Recipe {
     private String title;
 
     @ColumnInfo(name = "id_author")
-    @NonNull
     private int authorId;
 
     @ColumnInfo(name = "id_type")
-    @NonNull
     private int typeId;
 
-    @ColumnInfo(name = "date_creation")
-    @NonNull
-    @TypeConverters(DateConverter.class)
-    private Date dateCreate;
-
-    @ColumnInfo(name = "date_update")
-    @NonNull
-    @TypeConverters(DateConverter.class)
-    private Date dateUpdate;
+//    @ColumnInfo(name = "date_creation")
+//    @NonNull
+//    @TypeConverters(DateConverter.class)
+//    private Date dateCreate;
+//
+//    @ColumnInfo(name = "date_update")
+//    @NonNull
+//    @TypeConverters(DateConverter.class)
+//    private Date dateUpdate;
 
     @ColumnInfo(name = "ingredients")
     @NonNull
@@ -66,30 +84,23 @@ public class Recipe {
     @ColumnInfo(name = "comment")
     private String comment;
 
-/*    private Type type;
-    private Step step;*/
-
 
     // Constructors
-    public Recipe(@NonNull String title, @NonNull String ingredients, @NonNull String utensils, @NonNull String duration, String comment) {
+    public Recipe(int authorId, int typeId, @NonNull String title, @NonNull String ingredients, @NonNull String utensils, @NonNull String duration, String comment) {
         this.title = title;
-        this.dateCreate = new Date();
-        this.dateUpdate = new Date();
+        this.authorId = authorId;
+        this.typeId = typeId;
+//        this.dateCreate = new Date();
+//        this.dateUpdate = new Date();
         this.ingredients = ingredients;
         this.utensils = utensils;
         this.duration = duration;
         this.comment = comment;
     }
 
-    @Ignore
-    public Recipe(@NonNull String title, @NonNull String ingredients, @NonNull String utensils, @NonNull String duration) {
-        this.title = title;
-        this.dateCreate = new Date();
-        this.ingredients = ingredients;
-        this.utensils = utensils;
-        this.duration = duration;
-        this.comment = "";
-    }
+//    public Recipe(String title) {
+//        this.title = title;
+//    }
 
     // our getters and setters for recipe entities
     public int getRecipeId() {
@@ -108,23 +119,7 @@ public class Recipe {
         this.title = title;
     }
 
-/*
-    public Type getType() {
-        return this.type;
-    }
 
-    public void setType(Type t) {
-        this.type = t;
-    }
-
-    public Step getStep() {
-        return this.step;
-    }
-
-    public void setStep(Step stp) {
-        this.step = stp;
-    }
-*/
 
     public int getAuthorId() {
         return this.authorId;
@@ -142,22 +137,22 @@ public class Recipe {
         this.typeId = typeId;
     }
 
-    public Date getDateCreate() {
-        return this.dateCreate;
-    }
-
-    public void setDateCreate(Date date) {
-        this.dateCreate = date;
-    }
-
-    public Date getDateUpdate() {
-        return this.dateUpdate;
-    }
-
-    public void setDateUpdate(Date date) {
-        this.dateUpdate = date;
-    }
-
+//    public Date getDateCreate() {
+//        return this.dateCreate;
+//    }
+//
+//    public void setDateCreate(Date date) {
+//        this.dateCreate = date;
+//    }
+//
+//    public Date getDateUpdate() {
+//        return this.dateUpdate;
+//    }
+//
+//    public void setDateUpdate(Date date) {
+//        this.dateUpdate = date;
+//    }
+//
     public String getIngredients() {
         return this.ingredients;
     }
