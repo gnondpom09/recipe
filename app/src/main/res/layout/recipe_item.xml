@@ -7,10 +7,11 @@
     android:layout_margin="5dp"
 
     app:cardBackgroundColor="@android:color/white"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
     <LinearLayout
+        android:id="@+id/content_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -20,8 +21,7 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/title_recipe"
@@ -35,44 +35,102 @@
             tools:text="@string/name_recipe" />
 
         <android.support.v7.widget.GridLayout
+            android:id="@+id/legend_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/detail_block1"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:fontFamily="sans-serif"
-                android:padding="10dp"
-                android:textAlignment="viewStart"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                tools:text="@string/category" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/time_of_cooking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:fontFamily="sans-serif"
-                android:padding="10dp"
-                android:textAlignment="viewStart"
-                android:textColor="#333"
-                android:textSize="18sp"
-                tools:text="@string/time_of_cooking" />
+                <TextView
+                    android:id="@+id/label_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/medium"
+                    android:textSize="8sp"
+                    android:textStyle="italic"
+                    tools:text="@string/category" />
 
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:fontFamily="sans-serif"
-                android:padding="10dp"
-                android:textAlignment="viewStart"
-                android:textColor="#333"
-                android:textSize="18sp"
-                tools:text="@string/autor" />
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_block2"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/label_time_of_cooking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/medium"
+                    android:textSize="8sp"
+                    tools:text="@string/time_of_cooking" />
+
+                <TextView
+                    android:id="@+id/time_of_cooking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_block3"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/label_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/medium"
+                    android:textSize="8sp"
+                    tools:text="@string/author" />
+
+                <TextView
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
 
         </android.support.v7.widget.GridLayout>
 
