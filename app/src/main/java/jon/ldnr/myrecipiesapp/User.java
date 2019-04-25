@@ -2,10 +2,11 @@ package jon.ldnr.myrecipiesapp;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "user")
+@Entity(tableName = "users")
 public class User {
 
     @PrimaryKey(autoGenerate = true)
@@ -19,6 +20,12 @@ public class User {
     @ColumnInfo(name = "password")
     @NonNull
     private String password;
+
+    // constructor
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
     public int getUserId() {
         return this.userId;
