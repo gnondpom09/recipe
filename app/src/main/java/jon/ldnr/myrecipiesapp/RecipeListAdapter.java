@@ -24,6 +24,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     private final LayoutInflater mInflater;
     private List<Recipe> mRecipes; // cached copy of words
+//    private List<Type> mTypes; // cached copy of types
 
     RecipeListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -50,6 +51,11 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         mRecipes = recipes;
         notifyDataSetChanged();
     }
+
+//    void setTypes(List<Type> types) {
+//        mTypes = types;
+//        notifyDataSetChanged();
+//    }
 
     @Override
     public int getItemCount() {

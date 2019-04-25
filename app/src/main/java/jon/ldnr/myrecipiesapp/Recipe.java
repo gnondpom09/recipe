@@ -24,7 +24,9 @@ import java.util.Date;
             },
                     indices = {@Index(value = {"id_author"}), @Index(value = {"id_type"})}
 */
+
 //TODO onDelete = ForeignKey.CASCADE
+
 @Entity(tableName = "recipes",
         foreignKeys = {
                 @ForeignKey(entity = User.class,
@@ -36,12 +38,12 @@ import java.util.Date;
         indices = {
                 @Index(value =
                         {"id_author"}
-                        ),
+                ),
                 @Index(value =
                         {"id_type"}
-                        )
-                }
-        )
+                )
+        }
+)
 public class Recipe {
 
     // TODO comment attributes
