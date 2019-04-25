@@ -128,7 +128,7 @@
                     android:id="@+id/time_of_cooking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="bol"
+                    android:textFontWeight="bold"
                     android:background="?android:selectableItemBackground"
                     android:fontFamily="sans-serif"
                     android:paddingStart="10dp"
