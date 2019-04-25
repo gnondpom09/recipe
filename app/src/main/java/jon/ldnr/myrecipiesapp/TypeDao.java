@@ -28,6 +28,9 @@ public interface TypeDao {
     @Query("SELECT * FROM dishtypes WHERE typename LIKE :searchType")
     public LiveData<List<Type>> searchType(String searchType);
 
+//    @Query("SELECT typename FROM dishtypes WHERE id_type LIKE :idTypeRecipe")
+//    public LiveData<List<Type>> getTypeNameById(int idTypeRecipe);
+
     @Update
     void updateType(Type type);
 
