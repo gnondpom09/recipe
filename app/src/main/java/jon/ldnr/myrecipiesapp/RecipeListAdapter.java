@@ -15,10 +15,22 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     class RecipeViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView recipeItemView;
+        private final TextView recipeTimerItemView;
+        private final TextView recipeTimerLabelItemView;
+        private final TextView typeLabelItemView;
+        private final TextView userLabelItemView;
+//        private final TextView recipeAuthorItemView;
 
         private RecipeViewHolder(View itemView) {
             super(itemView);
             recipeItemView = itemView.findViewById(R.id.title_recipe);
+            recipeTimerItemView = itemView.findViewById(R.id.time_of_cooking);
+//            recipeAuthorItemView = itemView.findViewById(R.id.author);
+
+            // labels
+            recipeTimerLabelItemView = itemView.findViewById(R.id.label_time_of_cooking);
+            typeLabelItemView = itemView.findViewById(R.id.label_category);
+            userLabelItemView = itemView.findViewById(R.id.label_author);
         }
     }
 
@@ -41,6 +53,11 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         if (mRecipes != null) {
             Recipe current = mRecipes.get(position);
             holder.recipeItemView.setText(current.getTitle());
+            holder.recipeTimerItemView.setText(current.getDuration());
+            holder.userLabelItemView.setText(R.string.author);
+            holder.typeLabelItemView.setText(R.string.category);
+            holder.recipeTimerLabelItemView.setText(R.string.time_of_cooking);
+//            holder.recipeAuthorItemView.setText(current.getAuthorId());
         } else {
             holder.recipeItemView.setText("_-_-_-_-_");
         }
