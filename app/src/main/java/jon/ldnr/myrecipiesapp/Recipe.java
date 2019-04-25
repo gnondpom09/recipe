@@ -59,9 +59,9 @@ public class Recipe {
     @ColumnInfo(name = "id_type")
     private int typeId;
 
-    @ColumnInfo(name = "date_creation")
-    @NonNull
-    private Date dateCreate;
+//    @ColumnInfo(name = "date_creation")
+//    @NonNull
+//    private Date dateCreate;
 
 //    @ColumnInfo(name = "date_update")
 //    @NonNull
@@ -88,7 +88,7 @@ public class Recipe {
         this.title = title;
         this.authorId = authorId;
         this.typeId = typeId;
-        this.dateCreate = new Date();
+//        this.dateCreate = new Date();
 //        this.dateUpdate = new Date();
         this.ingredients = ingredients;
         this.utensils = utensils;
@@ -150,7 +150,7 @@ public class Recipe {
 //    public void setDateUpdate(Date date) {
 //        this.dateUpdate = date;
 //    }
-//
+
     public String getIngredients() {
         return this.ingredients;
     }

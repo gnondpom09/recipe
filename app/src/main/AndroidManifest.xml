@@ -12,7 +12,6 @@
         <activity android:name=".RecipeViewDetail"></activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".FormAddNewRecipe" />
-        <activity android:name=".NewWordActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

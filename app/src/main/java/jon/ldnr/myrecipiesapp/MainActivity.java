@@ -6,6 +6,8 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int NEW_RECIPE_ACTIVITY_REQUEST_CODE = 1;
 
     // Properties
-    private RecipesViewModel mRecipesViewModel;
+    private WordViewModel mWordViewModel;
 
     /**
      * Create view of application
@@ -42,17 +44,17 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView listOfRecipes = findViewById(R.id.list_of_recipes);
 
         // Set view of list layout
-        final RecipeListAdapter adapter = new RecipeListAdapter(this);
+        final WordListAdapter adapter = new WordListAdapter(this);
         listOfRecipes.setAdapter(adapter);
         listOfRecipes.setLayoutManager(new LinearLayoutManager(this));
 
         // Event change for elements of list
-        mRecipesViewModel = ViewModelProviders.of(this).get(RecipesViewModel.class);
-        mRecipesViewModel.getAllRecipes().observe(this, new Observer<List<Recipe>>() {
+        mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
+        mWordViewModel.getAllWords().observe(this, new Observer<List<Word>>() {
             @Override
-            public void onChanged(@Nullable final List<Recipe> recipes) {
+            public void onChanged(@Nullable final List<Word> words) {
                 // update cached copy of words in the adapter
-                adapter.setRecipes(recipes);
+                adapter.setWords(words);
             }
         });
     }
@@ -102,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-   /*     if (requestCode == NEW_RECIPE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Word word = new Word(data.getStringExtra(NewRecipeActivity.EXTRA_REPLY));
-            mRecipesViewModel.insert(word);
+/*        if (requestCode == NEW_RECIPE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
+            mWordViewModel.insert(word);
         } else {
             Toast.makeText(getApplicationContext(), R.string.empty_not_saved, Toast.LENGTH_LONG).show();
         }*/
