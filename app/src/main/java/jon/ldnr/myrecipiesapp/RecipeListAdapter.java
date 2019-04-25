@@ -24,6 +24,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     private final LayoutInflater mInflater;
     private List<Recipe> mRecipes; // cached copy of words
+//    private List<Type> mTypes; // cached copy of types
 
     RecipeListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -31,7 +32,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     @Override
     public RecipeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.recipe_detail, parent, false);
+        View itemView = mInflater.inflate(R.layout.recipe_item, parent, false);
         return new RecipeViewHolder(itemView);
     }
 
@@ -50,6 +51,11 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         mRecipes = recipes;
         notifyDataSetChanged();
     }
+
+//    void setTypes(List<Type> types) {
+//        mTypes = types;
+//        notifyDataSetChanged();
+//    }
 
     @Override
     public int getItemCount() {

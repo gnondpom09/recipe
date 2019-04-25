@@ -19,8 +19,8 @@ public interface TypeDao {
     @Delete
     void deleteType(Type type);
 
-    @Delete
-    void deleteTypes(Type... type);
+    @Query("DELETE FROM dishtypes")
+    void deleteTypes();
 
     @Query("SELECT * FROM dishtypes")
     public LiveData<List<Type>> getAllTypes();

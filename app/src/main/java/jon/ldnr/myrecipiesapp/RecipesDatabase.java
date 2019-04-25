@@ -76,9 +76,9 @@ public abstract class RecipesDatabase extends RoomDatabase {
             mRDao.deleteRecipes();
             Recipe recipe = new Recipe(1, 2,"coucou la recette", "ingredients", "ustensiles", "5h","commentaires");
             mRDao.insertRecipe(recipe);
-            recipe = new Recipe(2, 3, "Recette très bonne", "Ingrédients très bons", "Ustensiles de pro", "2s", "miam miam");
+            recipe = new Recipe(2, 1, "Recette très bonne", "Ingrédients très bons", "Ustensiles de pro", "2s", "miam miam");
             mRDao.insertRecipe(recipe);
-            recipe = new Recipe(1,2,"Recette bof", "ingrédients : moyens", "ustensiles préhistoroqieus", "5h", "hùùfzemzem");
+            recipe = new Recipe(2,2,"Recette bof", "ingrédients : moyens", "ustensiles préhistoroqieus", "5h", "hùùfzemzem");
             mRDao.insertRecipe(recipe);
 
             return null;

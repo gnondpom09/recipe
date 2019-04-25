@@ -19,8 +19,8 @@ public interface StepDao {
     @Delete
     void deleteStep(Step step);
 
-    @Delete
-    void deleteSteps(Step... step);
+    @Query("DELETE FROM steps")
+    void deleteSteps();
 
     @Query("SELECT * FROM steps")
     public LiveData<List<Step>> getAllSteps();
