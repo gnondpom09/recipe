@@ -4,11 +4,13 @@ import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 @Database(entities = {Recipe.class, User.class, Step.class, Type.class}, version = 1, exportSchema = false)
+@TypeConverters(DateConverter.class)
 public abstract class RecipesDatabase extends RoomDatabase {
 
     public abstract RecipeDao recipeDao();
@@ -37,7 +39,6 @@ public abstract class RecipesDatabase extends RoomDatabase {
     };
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-//        private final WordDao mWDao;
         private final RecipeDao mRDao;
         private final StepDao mSDao;
         private final UserDao mUDao;
@@ -45,7 +46,6 @@ public abstract class RecipesDatabase extends RoomDatabase {
 
 
         PopulateDbAsync(@NonNull RecipesDatabase db) {
-//            mWDao = db.wordDao();
             mRDao = db.recipeDao();
             mSDao = db.stepDao();
             mUDao = db.userDao();
