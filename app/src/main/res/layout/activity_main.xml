@@ -25,7 +25,8 @@
 
             <SearchView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimaryDark" />
 
         </android.support.v7.widget.LinearLayoutCompat>
 
@@ -42,16 +43,18 @@
 
                 <ImageButton
                     android:id="@+id/category1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="80dp"
+                    android:backgroundTint="@android:color/transparent"
                     android:contentDescription="@string/menu_login"
-                    app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                    app:srcCompat="@drawable/all" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/text_type_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="tretre" />
+                    android:textAlignment="center"
+                    android:text="Tous" />
 
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -63,16 +66,18 @@
 
                 <ImageButton
                     android:id="@+id/category2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="80dp"
+                    android:backgroundTint="@android:color/transparent"
                     android:contentDescription="@string/menu_login"
-                    app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                    app:srcCompat="@drawable/entree" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/text_type_2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="tretre" />
+                    android:textAlignment="center"
+                    android:text="Entrées" />
 
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -84,16 +89,17 @@
 
                 <ImageButton
                     android:id="@+id/category3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="80dp"
+                    android:backgroundTint="@android:color/transparent"
                     android:contentDescription="@string/menu_login"
-                    app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                    app:srcCompat="@drawable/plats" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/text_type_3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/steps"
+                    android:text="Plats"
                     android:textAlignment="center" />
 
             </android.support.v7.widget.LinearLayoutCompat>
@@ -106,16 +112,18 @@
 
                 <ImageButton
                     android:id="@+id/category4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="80dp"
+                    android:backgroundTint="@android:color/transparent"
                     android:contentDescription="@string/menu_login"
-                    app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                    app:srcCompat="@drawable/dessert" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/text_type_4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="tretre" />
+                    android:textAlignment="center"
+                    android:text="Desserts" />
 
             </android.support.v7.widget.LinearLayoutCompat>
 
