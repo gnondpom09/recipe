@@ -19,7 +19,8 @@
     <string name="step_image">Image de l\'étape</string>
     <string name="step_detail">Texte de l\'étape</string>
     <string name="time_of_cooking">Temps de préparation</string>
-    <string name="autor">Auteur</string>
+    <string name="ustensils">Ustensiles</string>
+    <string name="author">Auteur</string>
     <string name="date_of_publish">Date de publication</string>
     <string name="date_of_update">Date de mise à jour</string>
 </resources>
