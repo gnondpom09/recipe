@@ -14,7 +14,7 @@
         android:id="@+id/list_of_recipes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/recipe_detail"
-        android:background="@android:color/holo_purple"/>
+        tools:listitem="@layout/recipe_item"
+        android:background="@color/clear"/>
 
 </android.support.constraint.ConstraintLayout>
