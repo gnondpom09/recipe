@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FormAddNewRecipe"></activity>
+        <activity android:name=".RecipeViewDetail"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".FormAddNewRecipe" />
         <activity android:name=".NewWordActivity" />
         <activity
             android:name=".MainActivity"
